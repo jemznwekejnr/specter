@@ -1,230 +1,73 @@
 @include("layouts.app-title")
-<body>
-@include("layouts.app-sidebar")
 @include("layouts.app-header")
-<!--start page wrapper -->
-		<div class="page-wrapper">
-			<div class="page-content">
-				<div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
-					<div class="col">
-						<div class="card radius-10 border-warning border-start border-0 border-4">
-							<div class="card-body">
-								<div class="d-flex align-items-center">
-									<div>
-										<p class="mb-0">Total Expenses {{ date('F, Y') }}</p>
-										<h4 class="my-1 text-warning">{{ number_format(app\Http\Controllers\Controller::expensesthismonth(), 2) }}</h4>
-									</div>
-									<div class="text-warning ms-auto font-35">&#8358;
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card radius-10 border-primary border-start border-0 border-4">
-							<div class="card-body">
-								<div class="d-flex align-items-center">
-									<div>
-										<p class="mb-0">Total Inflow {{ date('F, Y') }}</p>
-										<h4 class="my-1 text-primary">0.00</h4>
-									</div>
-									<div class="text-primary ms-auto font-35">&#8358;
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card radius-10 border-danger border-start border-0 border-4">
-							<div class="card-body">
-								<div class="d-flex align-items-center">
-									<div>
-										<p class="mb-0">Total Expenses {{ date('Y') }}</p>
-										<h4 class="my-1 text-danger">{{ number_format(app\Http\Controllers\Controller::expensesthisyear(), 2) }}</h4>
-									</div>
-									<div class="text-danger ms-auto font-35">&#8358;
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card radius-10  border-success border-start border-0 border-4">
-							<div class="card-body">
-								<div class="d-flex align-items-center">
-									<div>
-										<p class="mb-0">Total Inflow {{ date('Y') }}</p>
-										<h4 class="text-success my-1">0.00</h4>
-									</div>
-									<div class="text-success ms-auto font-35">&#8358;
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div><!--end row-->
-
-				<div class="row">
-                   <div class="col-12 col-lg-8">
-                      <div class="card radius-10">
+@include("layouts.app-sidebar")
+!--**********************************
+   Content body start
+***********************************-->
+<div class="content-body" style="margin-top: -17px;">
+   <!-- row -->	
+<div class="page-titles">
+	<ol class="breadcrumb">
+		<li><h5 class="bc-title">Dashboard</h5></li>
+		<li class="breadcrumb-item"><a href="javascript:void(0)">
+			<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M2.125 6.375L8.5 1.41667L14.875 6.375V14.1667C14.875 14.5424 14.7257 14.9027 14.4601 15.1684C14.1944 15.4341 13.8341 15.5833 13.4583 15.5833H3.54167C3.16594 15.5833 2.80561 15.4341 2.53993 15.1684C2.27426 14.9027 2.125 14.5424 2.125 14.1667V6.375Z" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M6.375 15.5833V8.5H10.625V15.5833" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+			Home </a>
+		</li>
+		<li class="breadcrumb-item active"><a href="javascript:void(0)">Dashboard</a></li>
+	</ol>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xl-9 col-sm-9 col-md-9 wid-100">
+			<div class="row">
+				<!--Start-->
+				<div class="col-xl-12 col-lg-12">
+					<div class="card">
 						<div class="card-header">
-							<div class="d-flex align-items-center">
-								<div>
-									<h6 class="mb-0">Inflow vs Expenses Overview {{ date('Y') }}</h6>
-								</div>
-								<div class="dropdown ms-auto">
-									<a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-									</a>
-									<ul class="dropdown-menu">
-										<!--<li><a class="dropdown-item" href="javascript:;">Action</a>
-										</li>
-										<li><a class="dropdown-item" href="javascript:;">Another action</a>
-										</li>
-										<li>
-											<hr class="dropdown-divider">
-										</li>
-										<li><a class="dropdown-item" href="javascript:;">Something else here</a>
-										</li>-->
-									</ul>
-								</div>
-							</div>
+							<h4 class="card-title">Search Entity (Person or Organization)</h4>
 						</div>
-						  <div class="card-body">
-							<div class="chart-container-0">
-								<canvas id="chart1"></canvas>
-							  </div>
-						  </div>
-					  </div>
-				   </div>
-				   <div class="col-12 col-lg-4">
-                       <div class="card radius-10">
-						<div class="card-header">
-							<div class="d-flex align-items-center">
-								<div>
-									<h6 class="mb-0">Inflow vs Expenses {{ date('Y') }}</h6>
-								</div>
-								<div class="dropdown ms-auto">
-									<a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-									</a>
-									<ul class="dropdown-menu">
-										<!--<li><a class="dropdown-item" href="javascript:;">Action</a>
-										</li>
-										<li><a class="dropdown-item" href="javascript:;">Another action</a>
-										</li>
-										<li>
-											<hr class="dropdown-divider">
-										</li>
-										<li><a class="dropdown-item" href="javascript:;">Something else here</a>
-										</li>-->
-									</ul>
-								</div>
-							</div>
-						</div>
-						   <div class="card-body">
-							<div class="chart-container-0">
-								<canvas id="chart2"></canvas>
-							  </div>
-						   </div>
-					   </div>
-				   </div>
-				</div><!--end row-->
-				
-
-				 <div class="card radius-10">
-                         <div class="card-body">
-							<div class="d-flex align-items-center">
-								<div>
-									<h6 class="mb-0">Recent Expenses</h6>
-								</div>
-								<div class="dropdown ms-auto">
-									<a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-									</a>
-									<ul class="dropdown-menu">
-										<li><a class="dropdown-item" href="{{ url('allpvs') }}">View All</a>
-										</li>
-										<li>
-											<hr class="dropdown-divider">
-										</li>
-									</ul>
-								</div>
-							</div>
-						 <div class="table-responsive">
-						   <table class="table align-middle mb-0">
-							<thead class="table-light">
-							 <tr>
-										<th>Date</th>
-										<th>Title</th>
-										<th>Net Amount (&#8358;)</th>
-										<th>Created By</th>
-										<th>Sent To</th>
-										<th>CCs</th>
-										<th>Status</th>
-									</tr>
-							 </thead>
-							 <tbody>@foreach($pvs as $pv)
-									<tr>
-										<td>{{ $pv->created_at }}</td>
-										<td>{{ $pv->title }}</td>
-										<td>{{ $pv->totalnet }}</td>
-										<td>{{ app\Http\Controllers\Controller::staffname($pv->sentform) }}</td>
-										<td>{{ app\Http\Controllers\Controller::staffname($pv->sendto) }}</td>
-										<td>@if(!empty($pv->copies)) |
-											@php $copy = explode(",", $pv->copies) @endphp
-											@for($j=0; $j < count($copy); $j++)
-											{{ app\Http\Controllers\Controller::staffname($copy[$j]) }} |
-											@endfor
-											@endif</td>
-										<td>
-											<a href="{{ url('pvdetails?id='.$pv->id) }}">@if($pv->status == "Pending Approval")
-											<button type="button" class="btn btn-warning btn-sm">{{ $pv->status }}</button>
-											@elseif($pv->status == "Approved")
-											<button type="button" class="btn btn-primary btn-sm">{{ $pv->status }}</button>
-											@elseif($pv->status == "Paid")
-											<button type="button" class="btn btn-success btn-sm">{{ $pv->status }}</button>
-											@elseif($pv->status == "Rejected")
-											<button type="button" class="btn btn-danger btn-sm">{{ $pv->status }}</button>
-											@else
-											<button type="button" class="btn btn-info btn-sm">{{ $pv->status }}</button>
-											@endif</a>
-											</td>
-										
-									</tr>
-									@endforeach
-						    </tbody>
-						  </table>
-						  </div>
-						 </div>
-					  </div>
-
-					  <!--<div class="card radius-10 w-100">
-						<div class="card-header bg-transparent">
-							<div class="d-flex align-items-center">
-								<div>
-									<h6 class="mb-0">World Map</h6>
-								</div>
-								<div class="dropdown ms-auto">
-									<a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-									</a>
-									<ul class="dropdown-menu">
-										<li><a class="dropdown-item" href="javascript:;">Action</a>
-										</li>
-										<li><a class="dropdown-item" href="javascript:;">Another action</a>
-										</li>
-										<li>
-											<hr class="dropdown-divider">
-										</li>
-										<li><a class="dropdown-item" href="javascript:;">Something else here</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						   </div>
 						<div class="card-body">
-							<div id="geographic-map-2"></div>
-						 </div>
-					   </div>-->
+							<div class="basic-form">
+								<form action="submitsearch" method="post" id="submitsearch">
+									@csrf
+									<div class="row">
+										<div class="col-xl-5 col-md-5">
+											<div class="mb-3">
+												<input type="text" class="form-control input-rounded" name="searchtext" placeholder="Enter Query Text (Name or Organization)">
+											</div>
+										</div>
+										<div class="col-xl-3 col-md-3">
+											<div class="mb-3">
+												<input type="date" class="form-control input-rounded" name="startdate" id="startdate" placeholder="Start Date(OPTIONAL): e.g. '20131224'">
+											</div>
+										</div>
+										<div class="col-xl-3 col-md-3">
+											<div class="mb-3">
+												<input type="date" class="form-control input-rounded" name="enddate" id="enddate" readonly placeholder="End Date(OPTIONAL): e.g. '20131230'">
+											</div>
+										</div>
+										<div class="col-xl-1 col-md-1">
+											<div class="mb-6">
+												<button type="submit" id="button" class="btn btn-primary btn-sm btn-rounded">Search</button>
+												<img src="{{ asset('assets/images/processing.gif') }}" width="50px;" id="processing" class="processing" style="display: none;">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--End-->
+				<div id="results">
+					
+				</div>
 
-			</div>
-		</div>
-		<!--end page wrapper -->
+<!--**********************************
+   Content body end
+***********************************-->
 @include("layouts.app-footer")
+@include("process.dashboard")

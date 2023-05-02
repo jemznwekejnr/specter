@@ -1,24 +1,27 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="h-100">
 
 <head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta name="robots" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!--favicon-->
-	<link rel="icon" href="{{ asset('assets/images/RELIA-ENERGY-Logo-2020 (1).png') }}" type="image/png" />
-	<!--plugins-->
-	<link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
-	<link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
-	<link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
-	<!-- loader-->
-	<link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" />
-	<script src="{{ asset('assets/js/pace.min.js') }}"></script>
-	<!-- Bootstrap CSS -->
-	<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-	<link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
-	<title>Relia Energy ERP</title>
+	<meta name="description" content="W3crm:Customer Relationship Management Admin Bootstrap 5 Template">
+	<meta property="og:title" content="W3crm:Customer Relationship Management Admin Bootstrap 5 Template">
+	<meta property="og:description" content="W3crm:Customer Relationship Management Admin Bootstrap 5 Template">
+	<meta property="og:image" content="https://w3crm.dexignzone.com/xhtml/social-image.png">
+	<meta name="format-detection" content="telephone=no">
+	
+	<!-- PAGE TITLE HERE -->
+	<title>Specter</title>
+	
+	<!-- FAVICONS ICON -->
+	<link rel="shortcut icon" type="{{ asset('assets/image/png') }}" href="{{ asset('assets/images/favicon.png') }}">
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+
 </head>
+<body class="vh-100" style="background-image: url('assets/images/background.webp'); background-size: cover; background-repeat: no-repeat;">
+
+

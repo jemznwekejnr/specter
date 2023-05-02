@@ -616,6 +616,7 @@ class ComposerStaticInitd4aac787814956f0d46837fce9136e87
         'App\\Http\\Controllers\\PdfController' => __DIR__ . '/../..' . '/app/Http/Controllers/PdfController.php',
         'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
         'App\\Http\\Controllers\\ProjectController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProjectController.php',
+        'App\\Http\\Controllers\\SpecterController' => __DIR__ . '/../..' . '/app/Http/Controllers/SpecterController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',

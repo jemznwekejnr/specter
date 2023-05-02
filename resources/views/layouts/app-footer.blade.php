@@ -1,49 +1,72 @@
-<!--start overlay-->
-		<div class="overlay toggle-icon"></div>
-		<!--end overlay-->
-		<!--Start Back To Top Button-->
-		  <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
-		<!--End Back To Top Button-->
-		<footer class="page-footer">
-			<p class="mb-0">Copyright © Relia Energy {{ date('Y') }}. All right reserved.</p>
-		</footer>
+<!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+               <p>Copyright © Developed by Quorum Technologies LLC 2023</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+		<!--**********************************
+           Support ticket button start
+        ***********************************-->
+		
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
 	</div>
-	<!--end wrapper-->
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+
+    <script src="{{ asset('assets/vendor/global/global.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/chart.js/Chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/apexchart/apexchart.js') }}"></script>
+    
+    <!-- Dashboard 1 -->
+    <script src="{{ asset('assets/js/dashboard/dashboard-1.js') }}"></script>
+    <script src="{{ asset('assets/vendor/draggable/draggable.js') }}"></script>
+    
+    
+    <!-- tagify -->
+    <script src="{{ asset('assets/vendor/tagify/dist/tagify.js') }}"></script>
+     
+    <script src="{{ asset('assets/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/js/jszip.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins-init/datatables.init.js') }}"></script>
+   
+    <!-- Apex Chart -->
+    
+    <script src="{{ asset('assets/vendor/bootstrap-datetimepicker/js/moment.js') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+    
+
+    <!-- Vectormap -->
+    <script src="{{ asset('assets/vendor/jqvmap/js/jquery.vmap.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/jqvmap/js/jquery.vmap.world.js') }}"></script>
+    <script src="{{ asset('assets/vendor/jqvmap/js/jquery.vmap.usa.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/js/deznav-init.js') }}"></script>
+
+    <script>
+        $("#startdate").change(function(){
+            $("#enddate").removeAttr("readonly");
+        })
+    </script>
 	
-	<!-- Bootstrap JS -->
-	<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-	<!--plugins-->
-	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-	<script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
-	<script src="{{ asset('assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
-	<script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
-	<script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-	<script src="{{ asset('assets/plugins/chartjs/js/Chart.min.js') }}"></script>
-	<script src="{{ asset('assets/js/index.js') }}"></script>
-	<script src="{{ asset('assets/js/plugins/jasny-bootstrap.min.js') }}"></script>
-	<script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-	<script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('#example').DataTable();
-		  } );
-	</script>
-	<!--app JS-->
-	<script src="assets/js/app.js"></script>
-
-	<script>
-		var uploadField = document.getElementById("pics");
-
-	uploadField.onchange = function() {
-	    if(this.files[0].size > 2097152){
-	       Swal.fire("Error!", "File is too big, please ensure the file size is less than 2MB, then try again.", "error");
-	       this.value = "";
-	    };
-	};
-	</script>
-
 	
 </body>
-
 </html>

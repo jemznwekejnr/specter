@@ -1,75 +1,84 @@
 @include("layouts.app-title")
-<body>
-@include("layouts.app-sidebar")
 @include("layouts.app-header")
-<!--start page wrapper -->
-		<div class="page-wrapper">
-			<div class="page-content">
-				<!--breadcrumb-->
-				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-					<div class="breadcrumb-title pe-3">Tables</div>
-					<div class="ps-3">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb mb-0 p-0" style="background-color: transparent;">
-								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">User Table</li>
-							</ol>
-						</nav>
-					</div>
-					<!--<div class="ms-auto">
-						<div class="btn-group">
-							<button type="button" class="btn btn-primary">Settings</button>
-							<button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-							</button>
-							<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
-								<a class="dropdown-item" href="javascript:;">Another action</a>
-								<a class="dropdown-item" href="javascript:;">Something else here</a>
-								<div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
+@include("layouts.app-sidebar")
+!--**********************************
+   Content body start
+***********************************-->
+<div class="content-body" style="margin-top: -15px;">
+   <!-- row -->	
+<div class="page-titles">
+	<ol class="breadcrumb">
+		<li><h5 class="bc-title">Dashboard</h5></li>
+		<li class="breadcrumb-item"><a href="javascript:void(0)">
+			<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M2.125 6.375L8.5 1.41667L14.875 6.375V14.1667C14.875 14.5424 14.7257 14.9027 14.4601 15.1684C14.1944 15.4341 13.8341 15.5833 13.4583 15.5833H3.54167C3.16594 15.5833 2.80561 15.4341 2.53993 15.1684C2.27426 14.9027 2.125 14.5424 2.125 14.1667V6.375Z" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M6.375 15.5833V8.5H10.625V15.5833" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+			Home </a>
+		</li>
+		<li class="breadcrumb-item active"><a href="javascript:void(0)">Manage Account</a></li>
+	</ol>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xl-9 col-sm-9 col-md-9 wid-100">
+			<div class="row">
+				<!--Start-->
+				<div class="col-xl-12 col-lg-12">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">Registered Users</h4>
+						</div>
+						<div class="card-body">
+							<!--Table-->
+							<div class="col-xl-6 active-p">
+								<div class="card">
+									<div class="card-body p-0">
+										<div class="table-responsive active-projects" style="padding: 20px;">
+										<div class="tbl-caption">
+											
+										</div>
+										<table id="example" class="table example table-striped">
+										<thead>
+											<tr>
+												<th>Name</th>
+												<th>Email</th>
+												<th>Role</th>
+												<th>Status</th>
+												<th>Created At</th>
+											</tr>
+										</thead>
+										<tbody>
+											@isset($users)
+											@foreach($users as $user)
+											<tr>
+												<td>{{ $user->name }}</td>
+												<td>{{ $user->email }}</td>
+												<td>{{ $user->role }}</td>
+												<td>{{ $user->status }}</td>
+												<td>{{ $user->created_at }}</td>
+											</tr>
+											@endforeach
+											@endisset
+										</tbody>
+										
+									</table>
+										</div>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>-->
-				</div>
-				<!--end breadcrumb
-				<h6 class="mb-0 text-uppercase">Application User Table</h6>-->
-				<hr/>
-				<div class="card">
-					<div class="card-body">
-						<div class="table-responsive">
-							<table id="example" class="table table-striped table-bordered" style="width:100%">
-								<thead>
-									<tr>
-										<th>Name</th>
-										<th>Email</th>
-										<th>Role</th>
-										<th>Account Status</th>
-										<th>Date Converted</th>
-										@if(app\Http\Controllers\Controller::checkrole(Auth::user()->role, 7, 7) == "allow")
-										<th>Action</th>
-										@endif
-									</tr>
-								</thead>
-								<tbody>
-									@foreach($users as $user)
-									@if($user->id != 1)
-									<tr>
-										<td>{{ $user->name }}</td>
-										<td>{{ $user->email }}</td>
-										<td>{{ app\Http\Controllers\Controller::getrolename($user->role) }}</td>
-										<td>@if($user->status == 'Active') <button type="button" class="btn btn-success">{{ $user->status }}</button> @else<button type="button" class="btn btn-danger">{{ $user->status }}</button>@endif </td>
-										<td>{{ $user->created_at }}</td>
-										@if(app\Http\Controllers\Controller::checkrole(Auth::user()->role, 7, 7) == "allow")
-										<td><a href="{{ url('userprofile?id='.$user->id) }}" class="btn btn-dark px-5">View Details</a></td>
-										@endif
-									</tr>
-									@endif
-									@endforeach
-								</tbody>
-							</table>
+							<!--End of Table-->
 						</div>
 					</div>
 				</div>
-
-
+				<!--End-->
+<!--**********************************
+   Content body end
+***********************************-->
 @include("layouts.app-footer")
-@include("process.staffprofile")
+<script>
+	$(document).ready(function() {
+		$('.example').DataTable();
+	  });
+</script>
+@include("process.dashboard")

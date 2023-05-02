@@ -1,243 +1,55 @@
-<!doctype html>
-<html lang="en" class="semi-dark">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta name="robots" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!--favicon-->
-	<link rel="icon" href="{{ asset('assets/images/RELIA-ENERGY-Logo-2020 (1).png') }}" type="image/png" />
-	<!--plugins-->
-	<link href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet"/>
-	<link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
-	<link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
-	<link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
-	<!-- loader-->
-	<link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" />
-	<script src="{{ asset('assets/js/pace.min.js') }}"></script>
-	<!-- Bootstrap CSS -->
-	<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-	<link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
-	<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
+	<meta name="description" content="W3crm:Customer Relationship Management Admin Bootstrap 5 Template">
+	<meta property="og:title" content="W3crm:Customer Relationship Management Admin Bootstrap 5 Template">
+	<meta property="og:description" content="W3crm:Customer Relationship Management Admin Bootstrap 5 Template">
+	<meta property="og:image" content="https://w3crm.dexignzone.com/xhtml/social-image.png">
+	<meta name="format-detection" content="telephone=no">
+	
+	<!-- PAGE TITLE HERE -->
+	<title>Specter Analytical Dashboard</title>
+	<!-- FAVICONS ICON -->
+	<link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
 
-	<!-- Theme Style CSS -->
-	<link rel="stylesheet" href="{{ asset('assets/css/semi-dark.css') }}" />
+
+	<link href="{{ asset('assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/vendor/swiper/css/swiper-bundle.min.css') }}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.4/nouislider.min.css">
+	<link href="{{ asset('assets/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/vendor/jvmap/jquery-jvectormap.css') }}" rel="stylesheet">
+	<link href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css" rel="stylesheet">
+	<link href="{{ asset('assets/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+	
+	<!-- tagify-css -->
+	<link href="{{ asset('assets/vendor/tagify/dist/tagify.css') }}" rel="stylesheet">
+	
+	<!-- Style css -->
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	<title>Relia Energy ERP</title>
 
-	<style>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-		.required{
-
-			color: #ff0000;
-		}
-
-		body{
-			font-family: Garamond !important;
-		}
-
-		/* PV table definition */
-		.tdsn{
-			width: 5%;
-		}
-		.tdds{
-			width: 20%;
-		}
-		.tdqt{
-			width: 5%;
-		}
-		.tdpr{
-			width: 10%;
-		}
-		.tdam{
-			width: 10%;
-		}
-		.tdva{
-			width: 5%;
-		}
-		.tdvt{
-			width: 10%;
-		}
-		.tdgr{
-			width: 10%;
-		}
-		.tdwh{
-			width: 5%;
-		}
-		.tdwt{
-			width: 10%;
-		}
-		.tdnt{
-			width: 10%;
-		}
-
-		.vouchericon:hover{
-			cursor: pointer;
-		}
-
-		.totalsum{
-			font-weight: bold;
-		}
-
-
-		/*# sourceMappingURL=bootstrap-select.css.map */
-
-		.btn-file {
-		  position: relative;
-		  overflow: hidden;
-		  vertical-align: middle;
-		}
-
-		.btn-file>input {
-		  position: absolute;
-		  top: 0;
-		  right: 0;
-		  width: 100%;
-		  height: 100%;
-		  margin: 0;
-		  font-size: 23px;
-		  cursor: pointer;
-		  filter: alpha(opacity=0);
-		  opacity: 0;
-		  direction: ltr;
-		}
-
-		.fileinput {
-		  display: inline-block;
-		  margin-bottom: 9px;
-		}
-
-		.fileinput .form-control {
-		  display: inline-block;
-		  padding-top: 7px;
-		  padding-bottom: 5px;
-		  margin-bottom: 0;
-		  vertical-align: middle;
-		  cursor: text;
-		}
-
-		.fileinput .thumbnail {
-		  display: inline-block;
-		  margin-bottom: 10px;
-		  overflow: hidden;
-		  text-align: center;
-		  vertical-align: middle;
-		  max-width: 250px;
-		  box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.1);
-		}
-
-		.fileinput .thumbnail.img-circle {
-		  border-radius: 50%;
-		  max-width: 100px;
-		}
-
-		.fileinput .thumbnail>img {
-		  max-height: 100%;
-		}
-
-		.fileinput .btn {
-		  vertical-align: middle;
-		}
-
-		.fileinput-exists .fileinput-new,
-		.fileinput-new .fileinput-exists {
-		  display: none;
-		}
-
-		.fileinput-inline .fileinput-controls {
-		  display: inline;
-		}
-
-		.fileinput-filename {
-		  display: inline-block;
-		  overflow: hidden;
-		  vertical-align: middle;
-		}
-
-		.form-control .fileinput-filename {
-		  vertical-align: bottom;
-		}
-
-		.fileinput.input-group>* {
-		  position: relative;
-		  z-index: 2;
-		}
-
-		.fileinput.input-group>.btn-file {
-		  z-index: 1;
-		}
-
-		.fileinput-new.input-group .btn-file,
-		.fileinput-new .input-group .btn-file {
-		  border-radius: 0 4px 4px 0;
-		}
-
-		.fileinput-new.input-group .btn-file.btn-xs,
-		.fileinput-new .input-group .btn-file.btn-xs,
-		.fileinput-new.input-group .btn-file.btn-sm,
-		.fileinput-new .input-group .btn-file.btn-sm {
-		  border-radius: 0 3px 3px 0;
-		}
-
-		.fileinput-new.input-group .btn-file.btn-lg,
-		.fileinput-new .input-group .btn-file.btn-lg {
-		  border-radius: 0 6px 6px 0;
-		}
-
-		.form-group.has-warning .fileinput .fileinput-preview {
-		  color: #FFB236;
-		}
-
-		.form-group.has-warning .fileinput .thumbnail {
-		  border-color: #FFB236;
-		}
-
-		.form-group.has-error .fileinput .fileinput-preview {
-		  color: #FF3636;
-		}
-
-		.form-group.has-error .fileinput .thumbnail {
-		  border-color: #FF3636;
-		}
-
-		.form-group.has-success .fileinput .fileinput-preview {
-		  color: #18ce0f;
-		}
-
-		.form-group.has-success .fileinput .thumbnail {
-		  border-color: #18ce0f;
-		}
-
-		.input-group-addon:not(:first-child) {
-		  border-left: 0;
-		}
-
-		.thumbnail {
-		  border: 0 none;
-		  border-radius: 3px;
-		  padding: 0;
-		}
-
-		.card .image {
-		  overflow: hidden;
-		  height: 200px;
-		  position: relative;
-		}
-
-		.card .avatar {
-		  width: 250px;
-		  height: 250px;
-		  overflow: hidden;
-		  border-radius: 50%;
-		  margin-bottom: 15px;
-		}
-		.card-user .image {
-		  height: 120px;
-		}
-
-		
-	</style>
+	
 </head>
+<body data-typography="poppins" data-theme-version="light" data-layout="vertical" data-nav-headerbg="black" data-headerbg="color_1">
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+		<div class="lds-ripple">
+			<div></div>
+			<div></div>
+		</div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->

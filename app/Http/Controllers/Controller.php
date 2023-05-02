@@ -17,9 +17,7 @@ class Controller extends BaseController
 
     public static function staffname($user){
 
-        $staff = DB::table('profile')->where('id', $user)->get();
-
-        return $staff[0]->firstname." ".$staff[0]->surname." ".$staff[0]->othername;
+        return DB::table('user')->where('id', $user)->value('name');
     }
 
 
@@ -34,29 +32,10 @@ class Controller extends BaseController
         return DB::table('role')->where('id', $role)->value('role');
     }
 
-    public static function staffpics($user){
+    public static function url(){
 
-        return DB::table('profile')->where('id', $user)->value('image');
-
+        return "http://3.220.58.151:8501";
     }
-
-
-    public static function staffsignature($user){
-
-        return DB::table('profile')->where('id', $user)->value('signature');
-
-    }
-
-    public static function staffpdfsignature($user){
-
-        $signature = DB::table('profile')->where('id', $user)->value('signature');
-
-        return base64_encode(file_get_contents(public_path($signature)));
-
-    }
-
-
-    
 
 
     //generate password token for new user
@@ -80,11 +59,9 @@ class Controller extends BaseController
         return DB::table('users')->where('profileid', $user)->get();
     }
 
-    public static function profileemail($staff){
+    public static function profileemail($user){
 
-        $staff = DB::table('profile')->where('id', $staff)->get();
-
-        return $staff[0]->email;
+        return DB::table('profile')->where('id', $user)->value('email');
     }
 
 
@@ -108,7 +85,6 @@ class Controller extends BaseController
     //log event
     public static function logevent($action){
 
-
         //log the event
 
         $logs = array();
@@ -125,27 +101,11 @@ class Controller extends BaseController
 
     public static function datediffs($date1, $date2){
 
-
         $date1 = new DateTime($date1);
         $date2 = new DateTime($date2);
         $interval = $date1->diff($date2);
 
         return $interval->d." days ";
-    }
-
-    public static function staffdesignation($staff){
-
-        return DB::table('profile')->where('id', $staff)->value('designation');
-    }
-
-    public static function projectname($project){
-
-        return DB::table('projects')->where('id', $project)->value('title');
-    }
-
-    public static function projectdetail($project){
-
-        return DB::table('projects')->where('id', $project)->get();
     }
 
     public static function staffimage($staff){
@@ -169,83 +129,6 @@ class Controller extends BaseController
     }
 
 
-    public static function clientpayments($project){
-
-        return DB::table('invoice')->where([['project', $project], ['status', 'Paid']])->sum('sumamounts');
-    }
-
-    //get project progress from the tasks
-    public static function projectprogress($project){
-
-        $total = DB::table('task')->where('projectid', $project)->count();
-
-        $completed = DB::table('task')->where([['projectid', $project],['status', 'completed']])->count();
-
-        if($total == 0){
-            return 0;
-        }else{
-            $progress = $completed / $total * 100;
-
-            if($progress == 100){ //update project status
-
-                $status = DB::table('projects')->where('projectid', $project)->update(['status' => 'Completed', 'updated_at' => date('Y-m-d H:i:s')]);
-
-            }
-
-            return $progress;
-        }
-
-        
-    }
-
-
-    public static function officename($office){
-
-        $info = DB::table('companyinfo')->where('id', $office)->get();
-
-        if($info->count() == 0){
-            return "Office not found, edit this page to select office";
-        }else{
-            return $info[0]->address.', '.$info[0]->city.' '.$info[0]->state;
-        }
-    }
-
-
-    public static function getfulloffice($office){
-
-        $info = DB::table('companyinfo')->where('id', $office)->get();
-
-        if($info->count() == 0){
-            return "Office not found, edit this page to select office";
-        }else{
-            return $info;
-        }
-    }
-
-    
-
-    //get project expenses
-    public static function projectexpenses($project){
-
-        return DB::table('pv')->where([['project', $project], ['status', 'Paid']])->sum('totalnet');
-    }
-
-    //get task percentage
-    public static function taskpercent($project, $category){
-
-        $total = DB::table('task')->where('projectid', $project)->count();
-
-        $category = DB::table('task')->where([['projectid', $project], ['status', $category]])->count();
-
-        if($total == 0){
-            return 0;
-        }else{
-            return $category / $total * 100;
-        }
-        
-    }
-
-
     public static function checkrole($role, $process, $action){
 
         if(DB::table('privileges')->where([['role', $role], ['privilege', $process], ['action', $action]])->count() == 1){
@@ -259,27 +142,6 @@ class Controller extends BaseController
 
         return DB::table('users')->where('id', $user)->value('status');
 
-    }
-
-    //check if staff profile is completed
-    public static function checkprofile($staff){
-
-        $check = DB::table('profile')->where('id', $staff)->get();
-
-        if(empty($check[0]->staffid) || empty($check[0]->surname) || empty($check[0]->firstname) || empty($check[0]->email) || empty($check[0]->phone) || empty($check[0]->dob) || empty($check[0]->doe) || empty($check[0]->department) || empty($check[0]->designation) || empty($check[0]->office) || empty($check[0]->gender) || empty($check[0]->image) || empty($check[0]->signature)){
-
-            return "Incomplete";
-
-        }else{
-
-            return "Complete";
-        }
-    }
-
-
-    public static function getactions($action){
-
-        return DB::table('actions')->where('id', $action)->value('action');
     }
 
 
@@ -334,28 +196,5 @@ class Controller extends BaseController
         
     }
 
-
-    public static function circularrecipients($circular){
-
-
-        return DB::table('circular_recipeint')->where('circularid', $circular)->get();
-
-    }
-
-
-    public static function circulartitle($circular){
-
-        return DB::table('circular')->where('id', $circular)->value('title');
-    }
-    
-    public static function expensesthisyear(){
-        
-        return DB::table('pv')->where([['status', 'Approved'], ['created_at', 'LIKE', date('Y').'%']])->sum('totalnet');
-    }
-    
-    public static function expensesthismonth(){
-        
-        return DB::table('pv')->where([['status', 'Approved'], ['created_at', 'LIKE', date('Y-m').'%']])->sum('totalnet');
-    }
 
 }

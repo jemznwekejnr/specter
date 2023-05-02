@@ -25,6 +25,7 @@ return array(
     'App\\Http\\Controllers\\PdfController' => $baseDir . '/app/Http/Controllers/PdfController.php',
     'App\\Http\\Controllers\\ProfileController' => $baseDir . '/app/Http/Controllers/ProfileController.php',
     'App\\Http\\Controllers\\ProjectController' => $baseDir . '/app/Http/Controllers/ProjectController.php',
+    'App\\Http\\Controllers\\SpecterController' => $baseDir . '/app/Http/Controllers/SpecterController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
